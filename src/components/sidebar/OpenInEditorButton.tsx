@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react"
+import { mapOpenFrameInEditorResult } from "~/features/editor/mapOpenFrameInEditorResult"
 import { openFrameInEditor } from "~/features/editor/openFrameInEditor"
 import { EditorSettingsPanel } from "./EditorSettingsPanel"
 
@@ -11,14 +12,9 @@ export function OpenInEditorButton({ frame }: { frame: string }) {
   const handleClick = useCallback(async () => {
     setStatus("opening")
     const result = await openFrameInEditor(frame)
-    if (result.success) {
-      setStatus("idle")
-    } else if (result.reason === "missing_project_root") {
-      setStatus("settings")
-    } else {
-      setErrorMsg(result.error ?? "Unknown error")
-      setStatus("error")
-    }
+    const ui = mapOpenFrameInEditorResult(result)
+    setStatus(ui.status)
+    setErrorMsg(ui.errorMsg)
   }, [frame])
 
   if (status === "settings") {
