@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Plasmo / extension build
+.plasmo/
+build/
+dist/
+
+# Logs & caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.eslintcache
+*.tsbuildinfo
+
+# Tests / coverage
+coverage/
+
+# Environment (secrets)
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+*.swp
+*~
+
+# Python (scripts/train)
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# Training artefacts (regenerável / dados locais)
+scripts/train/synthetic_data.json
+scripts/train/feedback.json
