@@ -32,7 +32,7 @@ export function RetrainButton() {
       setStatus("done")
       setTimeout(() => setStatus("trained"), 3000)
     } else {
-      setResultMsg(result.error ?? "Erro desconhecido")
+      setResultMsg(result.error ?? "Unknown error")
       setStatus("error")
       setTimeout(() => setStatus("idle"), 4000)
     }
@@ -44,7 +44,7 @@ export function RetrainButton() {
     return (
       <div className="ss-retrain">
         <div className="ss-retrain-progress">
-          Treinando...{" "}
+          Training...{" "}
           {progress && (
             <span>
               Epoch {progress.epoch}/{progress.totalEpochs} — Loss:{" "}
@@ -69,7 +69,7 @@ export function RetrainButton() {
   if (status === "done") {
     return (
       <div className="ss-retrain">
-        <span className="ss-retrain-done">Modelo atualizado! {resultMsg}</span>
+        <span className="ss-retrain-done">Model updated! {resultMsg}</span>
       </div>
     )
   }
@@ -88,12 +88,12 @@ export function RetrainButton() {
     return (
       <div className="ss-retrain">
         <div className="ss-retrain-trained">
-          Modelo treinado com {trainedCount} feedback{trainedCount > 1 ? "s" : ""}. {resultMsg}
+          Model trained on {trainedCount} feedback item{trainedCount > 1 ? "s" : ""}. {resultMsg}
         </div>
         <button
           className="ss-retrain-btn ss-retrain-btn-secondary"
           onClick={handleRetrain}>
-          Retreinar novamente
+          Retrain again
         </button>
       </div>
     )
@@ -103,14 +103,14 @@ export function RetrainButton() {
     <div className="ss-retrain">
       {trainedCount > 0 && (
         <div className="ss-retrain-trained">
-          Modelo treinado com {trainedCount} feedback{trainedCount > 1 ? "s" : ""}.{" "}
-          {count - trainedCount} novo{count - trainedCount > 1 ? "s" : ""} disponivel{count - trainedCount > 1 ? "is" : ""}.
+          Model trained on {trainedCount} feedback item{trainedCount > 1 ? "s" : ""}.{" "}
+          {count - trainedCount} new item{count - trainedCount > 1 ? "s" : ""} available.
         </div>
       )}
       <button className="ss-retrain-btn" onClick={handleRetrain}>
         {trainedCount > 0
-          ? `Retreinar com ${count} feedbacks`
-          : `Treinar modelo (${count} feedback${count > 1 ? "s" : ""})`}
+          ? `Retrain with ${count} feedback items`
+          : `Train model (${count} feedback item${count > 1 ? "s" : ""})`}
       </button>
     </div>
   )

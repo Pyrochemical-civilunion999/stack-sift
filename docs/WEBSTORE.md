@@ -21,4 +21,4 @@ Use this after `npm run package` (or `npm run build` + zip the production folder
 
 - Store metadata (except what comes from the manifest at upload time) can be edited in the dashboard; manifest changes need a **new version** and re-upload.
 
-Official references: [Prepare your extension](https://developer.chrome.com/docs/webstore/prepare), [Publish](https://developer.chrome.com/docs/webstore/publish), [Hello World / basics](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=pt-br).
+Official references: [Prepare your extension](https://developer.chrome.com/docs/webstore/prepare), [Publish](https://developer.chrome.com/docs/webstore/publish), [Hello World / basics](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=en).

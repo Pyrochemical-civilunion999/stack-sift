@@ -3,47 +3,47 @@ import type { PatternRule } from "../patternRule"
 export const VALIDATION_RULES: PatternRule[] = [
   {
     patterns: ["unprocessable entity"],
-    text: "Entidade rejeitada pela validação. Verifique os decorators do class-validator ou regras de schema da entidade.",
+    text: "Entity rejected by validation. Check class-validator decorators or entity schema rules.",
     specificity: 0.85
   },
   {
     patterns: ["class-validator", "validate"],
-    text: "Validação do class-validator falhou. Revise os decorators da entidade e os dados enviados.",
+    text: "class-validator validation failed. Review entity decorators and submitted data.",
     specificity: 0.8
   },
   {
     patterns: ["bad request"],
-    text: "Request inválido (400). Verifique o body, headers e content-type esperados pelo endpoint.",
+    text: "Invalid request (400). Check body, headers, and expected content-type for the endpoint.",
     specificity: 0.7
   },
   {
     patterns: ["zod"],
-    text: "Schema Zod rejeitou o payload. Compare o objeto enviado com o schema esperado (.parse ou .safeParse).",
+    text: "Zod schema rejected the payload. Compare the object sent with the expected schema (.parse or .safeParse).",
     specificity: 0.85
   },
   {
     patterns: ["schema"],
-    text: "Schema validation falhou. Verifique se o formato dos dados está de acordo com o schema esperado.",
+    text: "Schema validation failed. Ensure the data shape matches the expected schema.",
     specificity: 0.5
   },
   {
     patterns: ["invalid email"],
-    text: "Formato de email inválido. Verifique as regras de formato aplicadas ao input.",
+    text: "Invalid email format. Check formatting rules applied to the input.",
     specificity: 0.8
   },
   {
     patterns: ["invalid format"],
-    text: "Formato de campo inválido. Verifique as regras de formato (email, CPF, telefone, etc.) aplicadas ao input.",
+    text: "Invalid field format. Check formatting rules (email, phone, national IDs, etc.) applied to the input.",
     specificity: 0.8
   },
   {
     patterns: ["required field"],
-    text: "Campo obrigatório ausente. Verifique se o payload inclui todos os campos obrigatórios do endpoint.",
+    text: "Required field missing. Ensure the payload includes all required fields for the endpoint.",
     specificity: 0.8
   },
   {
     patterns: ["missing field"],
-    text: "Campo obrigatório ausente. Verifique se o payload inclui todos os campos obrigatórios do endpoint.",
+    text: "Required field missing. Ensure the payload includes all required fields for the endpoint.",
     specificity: 0.8
   }
 ]

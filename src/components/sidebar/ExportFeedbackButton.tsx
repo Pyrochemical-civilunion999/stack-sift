@@ -27,10 +27,10 @@ export function ExportFeedbackButton() {
   return (
     <div className="ss-export-feedback">
       {status === "done" ? (
-        <span className="ss-export-done">Exportado!</span>
+        <span className="ss-export-done">Exported!</span>
       ) : (
         <button className="ss-export-btn" onClick={handleExport}>
-          Exportar {count} feedback{count > 1 ? "s" : ""} (JSON)
+          Export {count} feedback item{count > 1 ? "s" : ""} (JSON)
         </button>
       )}
     </div>

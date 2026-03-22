@@ -3,42 +3,42 @@ import type { PatternRule } from "../patternRule"
 export const INTEGRATION_RULES: PatternRule[] = [
   {
     patterns: ["enotfound"],
-    text: "DNS não resolveu o hostname do serviço externo. Verifique a URL, DNS e conectividade de rede.",
+    text: "DNS could not resolve the external service hostname. Check the URL, DNS, and network connectivity.",
     specificity: 0.9
   },
   {
     patterns: ["502", "bad gateway"],
-    text: "Bad Gateway (502). O proxy/load balancer não conseguiu conectar ao upstream. Verifique saúde do serviço destino.",
+    text: "Bad Gateway (502). The proxy/load balancer could not reach upstream. Check target service health.",
     specificity: 0.85
   },
   {
     patterns: ["503", "service unavailable"],
-    text: "Serviço indisponível (503). O serviço externo está em manutenção ou sobrecarregado. Implemente retry com backoff.",
+    text: "Service unavailable (503). The external service is under maintenance or overloaded. Implement retries with backoff.",
     specificity: 0.85
   },
   {
     patterns: ["rate limit"],
-    text: "Rate limit atingido. Implemente throttling, backoff exponencial ou aumente o limite com o provedor.",
+    text: "Rate limit hit. Add throttling, exponential backoff, or raise the limit with the provider.",
     specificity: 0.9
   },
   {
     patterns: ["too many requests"],
-    text: "Too many requests (429). Implemente throttling, backoff exponencial ou reduza a frequência de chamadas.",
+    text: "Too many requests (429). Add throttling, exponential backoff, or reduce call frequency.",
     specificity: 0.9
   },
   {
     patterns: ["429"],
-    text: "Rate limit atingido (429). Implemente throttling, backoff exponencial ou aumente o limite com o provedor.",
+    text: "Rate limit hit (429). Add throttling, exponential backoff, or raise the limit with the provider.",
     specificity: 0.85
   },
   {
     patterns: ["ssl", "certificate"],
-    text: "Erro de certificado SSL. Verifique validade do certificado, CA trust store e se o certificado corresponde ao hostname.",
+    text: "SSL certificate error. Check certificate validity, CA trust store, and hostname match.",
     specificity: 0.85
   },
   {
     patterns: ["cors"],
-    text: "Erro de CORS. Configure os headers Access-Control-Allow-Origin, Methods e Headers no servidor.",
+    text: "CORS error. Configure Access-Control-Allow-Origin, Methods, and Headers on the server.",
     specificity: 0.9
   }
 ]

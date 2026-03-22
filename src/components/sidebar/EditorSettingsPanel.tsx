@@ -53,7 +53,7 @@ export function EditorSettingsPanel({
   return (
     <div className="ss-editor-settings">
       <label className="ss-editor-label">
-        Caminho do projeto
+        Project path
         <input
           type="text"
           className="ss-editor-input"
@@ -63,7 +63,7 @@ export function EditorSettingsPanel({
         />
       </label>
       <p className="ss-editor-hint">
-        Dica: abra o terminal na raiz do projeto e rode <code>pwd</code> para copiar o caminho.
+        Tip: open a terminal at the project root and run <code>pwd</code> to copy the path.
       </p>
       <label className="ss-editor-label">
         Editor
@@ -82,13 +82,13 @@ export function EditorSettingsPanel({
         </div>
       )}
       {saved ? (
-        <div className="ss-editor-saved">Salvo!</div>
+        <div className="ss-editor-saved">Saved!</div>
       ) : (
         <button
           className="ss-editor-save"
           onClick={handleSave}
           disabled={!projectRoot.trim()}>
-          Salvar
+          Save
         </button>
       )}
     </div>

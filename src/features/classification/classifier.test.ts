@@ -140,7 +140,7 @@ describe("classifyIncident", () => {
   it("returns unknown for business logic errors", () => {
     const result = classifyIncident(
       makeIncident({
-        title: "Error: E-mail não encontrado",
+        title: "Error: Email not found",
         stackTrace: [
           "/app/dist/src/adapters/v3/handleV3Error.js in handleV3Error",
           "/app/dist/src/controllers/v3/AuthController.js in <anonymous>"

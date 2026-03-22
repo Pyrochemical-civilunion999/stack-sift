@@ -18,7 +18,7 @@ export function FeedbackPanel({
   if (feedbackSaved) {
     return (
       <div className="ss-feedback-saved">
-        Feedback salvo! O classificador vai aprender com isso.
+        Feedback saved! The classifier will learn from this.
       </div>
     )
   }
@@ -27,13 +27,13 @@ export function FeedbackPanel({
     return (
       <div className="ss-feedback-existing">
         <span>
-          Corrigido anteriormente como{" "}
+          Previously corrected as{" "}
           <strong>{existingCategory}</strong>
         </span>
         <button
           className="ss-feedback-redo"
           onClick={() => setIsOpen(true)}>
-          Alterar
+          Change
         </button>
       </div>
     )
@@ -44,14 +44,14 @@ export function FeedbackPanel({
       <button
         className="ss-feedback-trigger"
         onClick={() => setIsOpen(true)}>
-        Corrigir categoria
+        Correct category
       </button>
     )
   }
 
   return (
     <div className="ss-feedback-panel">
-      <p className="ss-feedback-label">Qual seria a categoria correta?</p>
+      <p className="ss-feedback-label">What is the correct category?</p>
       <div className="ss-feedback-options">
         {ALL_FEEDBACK_CATEGORIES.filter((c) => c !== currentCategory).map((cat) => (
           <button
@@ -68,7 +68,7 @@ export function FeedbackPanel({
       <button
         className="ss-feedback-cancel"
         onClick={() => setIsOpen(false)}>
-        Cancelar
+        Cancel
       </button>
     </div>
   )

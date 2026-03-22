@@ -13,10 +13,10 @@ export function OpenInEditorButton({ frame }: { frame: string }) {
     const result = await openFrameInEditor(frame)
     if (result.success) {
       setStatus("idle")
-    } else if (result.error?.includes("Configure")) {
+    } else if (result.reason === "missing_project_root") {
       setStatus("settings")
     } else {
-      setErrorMsg(result.error ?? "Erro desconhecido")
+      setErrorMsg(result.error ?? "Unknown error")
       setStatus("error")
     }
   }, [frame])
@@ -36,12 +36,12 @@ export function OpenInEditorButton({ frame }: { frame: string }) {
         className="ss-open-editor-btn"
         onClick={handleClick}
         disabled={status === "opening"}>
-        {status === "opening" ? "Abrindo..." : "Abrir no editor"}
+        {status === "opening" ? "Opening..." : "Open in editor"}
       </button>
       <button
         className="ss-open-editor-config"
         onClick={() => setStatus("settings")}
-        title="Configurar editor">
+        title="Editor settings">
         ⚙
       </button>
       {status === "error" && (

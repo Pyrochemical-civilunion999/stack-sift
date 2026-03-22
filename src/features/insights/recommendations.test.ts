@@ -105,7 +105,7 @@ describe("buildRecommendations", () => {
         title: "missing field: email"
       })
       const recs = buildRecommendations(incident, "validation")
-      expect(recs[0].text).toContain("obrigatórios")
+      expect(recs[0].text).toContain("required")
     })
   })
 
@@ -123,7 +123,7 @@ describe("buildRecommendations", () => {
         title: "socket hang up"
       })
       const recs = buildRecommendations(incident, "timeout")
-      expect(recs[0].text).toContain("cortada")
+      expect(recs[0].text).toContain("dropped")
     })
 
     it("detects deadline exceeded", () => {
@@ -139,7 +139,7 @@ describe("buildRecommendations", () => {
         title: "connect ECONNREFUSED 127.0.0.1:6379"
       })
       const recs = buildRecommendations(incident, "timeout")
-      expect(recs[0].text).toContain("porta")
+      expect(recs[0].text).toContain("port")
     })
   })
 
@@ -157,7 +157,7 @@ describe("buildRecommendations", () => {
         title: "JsonWebTokenError: invalid token"
       })
       const recs = buildRecommendations(incident, "auth")
-      expect(recs[0].text).toContain("assinatura")
+      expect(recs[0].text).toContain("signature")
     })
 
     it("detects 403 forbidden", () => {
@@ -199,7 +199,7 @@ describe("buildRecommendations", () => {
         title: "RangeError: Maximum call stack size exceeded"
       })
       const recs = buildRecommendations(incident, "runtime")
-      expect(recs[0].text).toContain("recursão")
+      expect(recs[0].text).toContain("recursion")
     })
 
     it("detects chunk loading failure", () => {
@@ -259,7 +259,7 @@ describe("buildRecommendations", () => {
         title: "ENOSPC: no space left on device"
       })
       const recs = buildRecommendations(incident, "infra")
-      expect(recs[0].text).toContain("Disco")
+      expect(recs[0].text).toContain("Disk")
     })
 
     it("detects OOM killed", () => {
