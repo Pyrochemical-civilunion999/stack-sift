@@ -7,10 +7,14 @@ export interface RetrainProgress {
   accuracy: number
 }
 
-export interface RetrainResult {
-  success: boolean
-  trainResult?: TrainResult
-  totalExamples?: number
-  feedbackCount?: number
-  error?: string
-}
+export type RetrainResult =
+  | {
+      success: true
+      trainResult: TrainResult
+      totalExamples: number
+      feedbackCount: number
+    }
+  | {
+      success: false
+      error: string
+    }
