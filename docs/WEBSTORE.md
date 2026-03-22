@@ -8,7 +8,9 @@ Use this after `npm run package` (or `npm run build` + zip the production folder
 2. **Privacy policy URL** — The store requires a **public HTTPS URL** to your policy (not a local file).
    - Host `docs/privacy-policy.html` (e.g. **GitHub Pages** on `main` / `docs`, or paste the same text on your site).
    - Example (GitHub Pages): `https://eduardodepatta.github.io/stack-sift/privacy-policy.html` — or use the raw file URL from `main`: `https://raw.githubusercontent.com/EduardoDePatta/stack-sift/main/docs/privacy-policy.html` if the store accepts it (many publishers use Pages or a `/docs` site for a proper `text/html` page).
-3. **Icons** — `assets/icon.png` is the Plasmo source; the built package should include generated sizes in the manifest. Rebuild after changing the icon.
+3. **Icons** — `assets/icon.png` is the Plasmo source (any square size works for the build); the built package includes generated sizes in the manifest. Rebuild after changing the icon.
+   - **Store listing “Store icon” field** — The developer dashboard requires **exactly 128×128** pixels for that upload. Use [`assets/icon-store-128.png`](../assets/icon-store-128.png) (exported from the main icon). If you upload a larger square (e.g. 512×512), you will see an error like “image size is incorrect.”
+   - Labels such as “Ícone da Store” in the dashboard are **Google’s UI** (browser/account language), not strings from this extension.
 4. **Manifest text** — `description` in `package.json` must stay **≤ 132 characters** for the store (Chrome limit).
 5. **Screenshots** — In the dashboard, add at least **1** screenshot (1280×800 or 640×400 PNG/JPEG) showing the sidebar on a Sentry issue page.
 6. **Single purpose** — Describe one clear purpose: triage/help on Sentry issue pages.
