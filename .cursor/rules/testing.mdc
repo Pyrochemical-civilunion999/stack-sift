@@ -1,0 +1,28 @@
+---
+description: Testing rules for Stack Sift
+globs: src/**/*.test.ts
+---
+
+# Testing
+
+## Process
+- All non-trivial logic must have tests
+- Write tests alongside implementation, not after
+- Run tests before finalizing any module
+- A task is only complete when tests pass
+
+## Style
+- Use Vitest with jsdom environment for DOM-related tests
+- Prefer focused, fast unit tests
+- Test behavior, not implementation details
+- Use realistic inputs — not trivial "foo/bar" data
+- Cover happy path and meaningful edge cases
+- Avoid brittle tests that break on refactors
+- Colocate test files next to the source they test
+
+## What Must Be Tested
+- DOM extraction
+- Incident classification (all categories)
+- Insight generation (summary, hypothesis, priority, useful frame)
+- Sentry page detection
+- Parsing helpers

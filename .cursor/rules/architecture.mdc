@@ -1,0 +1,26 @@
+---
+description: Architecture rules for Stack Sift browser extension
+globs: src/**/*
+---
+
+# Architecture
+
+## Structure
+- Domain-oriented: `features/dom`, `features/classification`, `features/insights`, `features/sentry`
+- `shared/types` for project-level types, `shared/utils` for small reusable helpers
+- `components/` for pure UI only
+
+## Boundaries
+- `features/dom`: DOM reading, extraction, normalization only. No classification. No React.
+- `features/classification`: Pure rule-based functions. No DOM access. No React.
+- `features/insights`: Summary, hypothesis, priority, useful-frame. Pure functions. No DOM. No React.
+- `features/sentry`: Orchestration between extraction, classification, and rendering.
+- `components/`: Pure UI. No business logic.
+
+## Code Style
+- No `any` — use `unknown` + narrowing when needed
+- Pure functions wherever possible
+- No business logic inside React components
+- Files should stay under ~200 lines
+- No premature generic abstractions — build concretely first
+- No dead files or placeholder architecture without implementation
