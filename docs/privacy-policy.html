@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stack Sift — Privacy Policy</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 42rem;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+      color: #1a1a1a;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Stack Sift — Privacy Policy</h1>
+  <p><strong>Last updated:</strong> March 2026</p>
+  <p>
+    Stack Sift is a browser extension that helps you triage issues on
+    <strong>sentry.io</strong> pages. This policy describes how the extension handles information.
+  </p>
+
+  <h2>Data processing</h2>
+  <p>
+    Classification, machine learning, and feedback features run <strong>entirely on your device</strong>.
+    The extension does not send your error data, stack traces, or feedback to servers operated by the
+    extension author.
+  </p>
+
+  <h2>What is stored locally</h2>
+  <ul>
+    <li>
+      <strong>chrome.storage.local</strong> — optional feedback you save (corrected categories and
+      derived fingerprints) and editor settings (project path, editor choice) you configure.
+    </li>
+    <li>
+      <strong>IndexedDB</strong> (via TensorFlow.js) — the optional on-device neural network model after
+      you train it in the extension.
+    </li>
+  </ul>
+  <p>This data stays on your computer unless you export it yourself (e.g. JSON export in the UI).</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>Host access to sentry.io</strong> — required to read the issue page and show the sidebar only on those
+      sites.</li>
+    <li><strong>storage</strong> — required to persist feedback, settings, and related state locally.</li>
+  </ul>
+
+  <h2>Third parties</h2>
+  <p>
+    When you use Stack Sift, you are already using <strong>Sentry</strong> in the browser; their
+    privacy terms apply to sentry.io. The extension does not add remote analytics or advertising
+    trackers.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    For privacy questions, open an issue at
+    <a href="https://github.com/EduardoDePatta/stack-sift">github.com/EduardoDePatta/stack-sift</a>.
+  </p>
+</body>
+
+</html>
