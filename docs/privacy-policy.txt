@@ -1,0 +1,24 @@
+Privacy Policy
+Last updated: March 2026
+
+Stack Sift runs entirely locally in the browser.
+
+Data Collection
+This extension does not collect, transmit, or store personal data externally.
+
+Data Processing
+All processing happens locally on the user's device. The extension reads information from Sentry issue pages (such as stack traces, breadcrumbs, and metadata) only to provide insights directly within the page.
+
+Storage
+The extension stores:
+- user preferences (such as project path mappings)
+- local model data
+- user feedback used to improve classification
+
+All stored data remains on the user's device and is not shared.
+
+Third Parties
+No data is sent to external servers or third-party services.
+
+Changes
+This policy may be updated in future versions of the extension.
