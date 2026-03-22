@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import { getFeedbackCount } from "~/features/feedback/storage"
 import {
+  mapRetrainResultToUiOutcome,
   retrainWithFeedback,
   type RetrainProgress
 } from "~/features/ml/retrain"
@@ -23,16 +24,15 @@ export function RetrainButton() {
     setProgress(null)
 
     const result = await retrainWithFeedback((p) => setProgress(p))
+    const outcome = mapRetrainResultToUiOutcome(result)
 
-    if (result.success && result.trainResult) {
-      const acc = Math.round(result.trainResult.finalAccuracy * 100)
-      const fbCount = result.feedbackCount ?? 0
-      setResultMsg(`Accuracy: ${acc}%`)
-      setTrainedCount(fbCount)
+    if (outcome.ok) {
+      setResultMsg(outcome.resultMsg)
+      setTrainedCount(outcome.feedbackCount)
       setStatus("done")
       setTimeout(() => setStatus("trained"), 3000)
     } else {
-      setResultMsg(result.error ?? "Unknown error")
+      setResultMsg(outcome.errorMsg)
       setStatus("error")
       setTimeout(() => setStatus("idle"), 4000)
     }
