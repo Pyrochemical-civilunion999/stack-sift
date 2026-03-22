@@ -33,20 +33,6 @@ Thumbs.db
 *.swp
 *~
 
-# Python (scripts/train)
-.venv/
-venv/
-env/
+# Python (if ever needed)
 __pycache__/
 *.py[cod]
-*$py.class
-*.egg-info/
-.eggs/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-htmlcov/
-
-# Training artefacts (regenerável / dados locais)
-scripts/train/synthetic_data.json
-scripts/train/feedback.json
