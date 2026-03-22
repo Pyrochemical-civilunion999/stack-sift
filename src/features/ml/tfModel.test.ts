@@ -1,9 +1,16 @@
-import { describe, expect, it } from "vitest"
+import * as tf from "@tensorflow/tfjs"
+import { beforeAll, describe, expect, it } from "vitest"
 import { createModel } from "./tfModel/createModel"
 import { predict } from "./tfModel/predict"
 import { trainModel } from "./tfModel/trainModel"
 
 describe("tfModel", () => {
+  beforeAll(async () => {
+    tf.env().set("IS_NODE", false)
+    await tf.setBackend("cpu")
+    await tf.ready()
+  })
+
   it("creates a model with correct input/output shapes", () => {
     const model = createModel()
     expect(model.inputs[0].shape).toEqual([null, 64])
