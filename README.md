@@ -2,6 +2,10 @@
 
 A Chrome/Edge extension that provides intelligent incident triage directly on Sentry issue pages. Runs **100% locally** in the browser — no backend, no external APIs, no cloud inference.
 
+## Install
+
+**[Stack Sift — Chrome Web Store](https://chromewebstore.google.com/detail/stack-sift/hkgbhmljgofililfkalilpnbnjdnoone)** — add the extension from the store (Chrome and other Chromium browsers that support the Web Store).
+
 ## Features
 
 - **Automatic classification** of errors into 8 categories: timeout, database, auth, runtime, validation, integration, infra, unknown
